@@ -22,8 +22,8 @@ export default function AppHeader() {
 
   const navButtons = navItems.map(item => (
 
-    <li >
-      <Link key={item.path} className={`text-[#E5E8EC] p-2 rounded-sm ${item.path === activePathname ? "bg-black/20" : ""}`} href={item.path}>{item.name}</Link>
+    <li key={item.path}>
+      <Link className={`text-[#E5E8EC] p-2 rounded-sm ${item.path === activePathname ? "bg-black/20" : ""}`} href={item.path}>{item.name}</Link>
     </li>
 
   ))
