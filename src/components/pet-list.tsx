@@ -18,7 +18,10 @@ export default function PetList() {
   });
 
 
-    const listOfPets = filteredPets.map(pet => (
+
+    const sortedPets =  filteredPets.sort((a, b) => a.createdAt?.getTime() - b.createdAt?.getTime());
+
+    const listOfPets = sortedPets.map(pet => (
     <li key={pet.id}>
       <button onClick={() => handlePetId(pet.id)} className={`flex items-center w-full py-4 px-5 gap-4 hover:bg-gray-200 ${pet.id === selectedPetId ? 'bg-gray-200' : 'bg-white'}`}>
       <Image  className="rounded-full object-cover w-16 h-16"  quality={80} src={pet.imageUrl}  alt="Pet Image" width={65} height={65} />
@@ -26,6 +29,7 @@ export default function PetList() {
       </button>
     </li>
   )) 
+
 
 
   return (

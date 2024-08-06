@@ -110,6 +110,7 @@ export async function addPet(newPet : unknown) {
       }
     });
   } catch (error) {
+    console.log(error)
     return {
       message: "Could not add pet"
     }
@@ -207,5 +208,7 @@ export async function editPet(selectedPetId : unknown, newPet: unknown) {
     console.log(error)
     return "Could not add pet";
   }
+
+
   revalidatePath('/app', 'layout');
 }
