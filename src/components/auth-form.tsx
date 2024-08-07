@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 
+
 type AuthFormProps = {
   method: "signUp" | "logIn";
 };

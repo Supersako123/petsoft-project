@@ -8,6 +8,7 @@ import { checkAuth } from "./lib/server-utils";
 import { Prisma } from "@prisma/client";
 import { AuthError } from "next-auth";
 import { toast } from "sonner";
+import { authSchema } from "./lib/validations";
 
 
 // --- user actions ---
@@ -17,7 +18,13 @@ export async function signUp(prevState: unknown, formData: FormData) {
   const authData = Object.fromEntries(formData.entries());
   const hashedPassword = await bcrypt.hash(authData.password as string, 10);
 
-  const validatedFormData = petFormSchema.safeParse(authData);
+  const validatedFormData = authSchema.safeParse(authData);
+
+  if(!validatedFormData.success) {
+    return {
+      errorMessage: "One or more fields are missing",
+    };
+  } 
 
 
   try
